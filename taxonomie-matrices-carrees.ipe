@@ -1,0 +1,3282 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipe SYSTEM "ipe.dtd">
+<ipe version="70218" creator="Ipe 7.2.20">
+<info created="D:20200627125949" modified="D:20220411235229" title="Toxonomie des matrices carrées" author="Laurent VALADE"/>
+<preamble>\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Changement de l’espace inter-lignes
+% https://tex.stackexchange.com/questions/83855
+\usepackage{setspace}
+%\renewcommand{\baselinestretch}{1}
+
+% Pour \rotatebox[origin=c]{90}{Texte}
+%\usepackage{graphicx}
+
+% Espace fine pour la multiplication
+\mathcode`\*=&quot;8000
+{\catcode`\*=\active
+\gdef*{\mathclose{}\,\mathopen{}}}
+
+% Hyperliens
+\usepackage{hyperref}
+
+% Structures algébriques
+% Algèbre avec un Anneau Unifère Non-Commutatif
+\newcommand{\algebreaunc}[1]{{\color{purple}\textbf{#1}}}
+% Algèbre avec un Anneau Intègre
+\newcommand{\algebreai}[1]{{\color{violet}\textbf{#1}}}
+% Algèbre avec un Corps Commutatif
+\newcommand{\algebrecc}[1]{{\color{pink}\textbf{#1}}}
+% Espace vectoriel
+%\newcommand{\ev}[1]{{\color{black}\textbf{#1}}}
+% Espace Vectoriel / Sous-Espace Vectoriel
+\newcommand{\evsev}[1]{{\color{blue}\textbf{#1}}}
+% Module (EV sur un anneau au lieu d’un corps)
+\newcommand{\module}[1]{{\color{turquoise}\textbf{#1}}}
+% Monoïde (groupe sans l’inversion)
+\newcommand{\monoide}[1]{{\color{seagreen}\textbf{#1}}}
+% Groupe
+\newcommand{\groupe}[1]{{\color{red}\textbf{#1}}}
+% Ensemble non muni d’une structure algébrique
+\newcommand{\quelconque}[1]{{\color{darkgray}\textbf{#1}}}
+
+% Opérateurs
+\DeclareMathOperator{\tr}{trace}
+\DeclareMathOperator{\rang}{rang}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\rmT}{\mathsf{T}}
+
+
+</preamble>
+<ipestyle name="basic">
+<symbol name="arrow/arc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/farc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/ptarc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fptarc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="mark/circle(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</symbol>
+<symbol name="mark/disk(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+</path>
+</symbol>
+<symbol name="mark/fdisk(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+0.5 0 0 0.5 0 0 e
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</group>
+</symbol>
+<symbol name="mark/box(sx)" transformations="translations">
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</symbol>
+<symbol name="mark/square(sx)" transformations="translations">
+<path fill="sym-stroke">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+</path>
+</symbol>
+<symbol name="mark/fsquare(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+-0.5 -0.5 m
+0.5 -0.5 l
+0.5 0.5 l
+-0.5 0.5 l
+h
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="mark/cross(sx)" transformations="translations">
+<group>
+<path fill="sym-stroke">
+-0.43 -0.57 m
+0.57 0.43 l
+0.43 0.57 l
+-0.57 -0.43 l
+h
+</path>
+<path fill="sym-stroke">
+-0.43 0.57 m
+0.57 -0.43 l
+0.43 -0.57 l
+-0.57 0.43 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="arrow/fnormal(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/pointed(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fpointed(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/linear(spx)">
+<path stroke="sym-stroke" pen="sym-pen">
+-1 0.333 m
+0 0 l
+-1 -0.333 l
+</path>
+</symbol>
+<symbol name="arrow/fdouble(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/double(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-normal(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0.5 0 m
+-0.5 0.333 l
+-0.5 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-fnormal(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0.5 0 m
+-0.5 0.333 l
+-0.5 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-pointed(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0.5 0 m
+-0.5 0.333 l
+-0.3 0 l
+-0.5 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-fpointed(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0.5 0 m
+-0.5 0.333 l
+-0.3 0 l
+-0.5 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-double(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+1 0 m
+0 0.333 l
+0 -0.333 l
+h
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-fdouble(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+1 0 m
+0 0.333 l
+0 -0.333 l
+h
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<pen name="heavier" value="0.8"/>
+<pen name="fat" value="1.2"/>
+<pen name="ultrafat" value="4"/>
+<symbolsize name="large" value="5"/>
+<symbolsize name="small" value="2"/>
+<symbolsize name="tiny" value="1.1"/>
+<arrowsize name="large" value="10"/>
+<arrowsize name="small" value="5"/>
+<arrowsize name="tiny" value="3"/>
+<color name="red" value="1 0 0"/>
+<color name="blue" value="0 0 1"/>
+<color name="green" value="0 1 0"/>
+<color name="yellow" value="1 1 0"/>
+<color name="orange" value="1 0.647 0"/>
+<color name="gold" value="1 0.843 0"/>
+<color name="purple" value="0.627 0.125 0.941"/>
+<color name="gray" value="0.745"/>
+<color name="brown" value="0.647 0.165 0.165"/>
+<color name="navy" value="0 0 0.502"/>
+<color name="pink" value="1 0.753 0.796"/>
+<color name="seagreen" value="0.18 0.545 0.341"/>
+<color name="turquoise" value="0.251 0.878 0.816"/>
+<color name="violet" value="0.933 0.51 0.933"/>
+<color name="darkblue" value="0 0 0.545"/>
+<color name="darkcyan" value="0 0.545 0.545"/>
+<color name="darkgray" value="0.663"/>
+<color name="darkgreen" value="0 0.392 0"/>
+<color name="darkmagenta" value="0.545 0 0.545"/>
+<color name="darkorange" value="1 0.549 0"/>
+<color name="darkred" value="0.545 0 0"/>
+<color name="lightblue" value="0.678 0.847 0.902"/>
+<color name="lightcyan" value="0.878 1 1"/>
+<color name="lightgray" value="0.98"/>
+<color name="lightgreen" value="0.565 0.933 0.565"/>
+<color name="lightyellow" value="1 1 0.878"/>
+<dashstyle name="dotted" value="[1 3] 0"/>
+<dashstyle name="dashed" value="[4] 0"/>
+<dashstyle name="dash dotted" value="[4 2 1 2] 0"/>
+<dashstyle name="dash dot dotted" value="[4 2 1 2 1 2] 0"/>
+<textsize name="large" value="\large"/>
+<textsize name="Large" value="\Large"/>
+<textsize name="LARGE" value="\LARGE"/>
+<textsize name="huge" value="\huge"/>
+<textsize name="Huge" value="\Huge"/>
+<textsize name="small" value="\small"/>
+<textsize name="footnote" value="\footnotesize"/>
+<textsize name="tiny" value="\tiny"/>
+<textstyle name="center" begin="\begin{center}" end="\end{center}"/>
+<textstyle name="itemize" begin="\begin{itemize}" end="\end{itemize}"/>
+<textstyle name="item" begin="\begin{itemize}\item{}" end="\end{itemize}"/>
+<gridsize name="4 pts" value="4"/>
+<gridsize name="8 pts (~3 mm)" value="8"/>
+<gridsize name="16 pts (~6 mm)" value="16"/>
+<gridsize name="32 pts (~12 mm)" value="32"/>
+<gridsize name="10 pts (~3.5 mm)" value="10"/>
+<gridsize name="20 pts (~7 mm)" value="20"/>
+<gridsize name="14 pts (~5 mm)" value="14"/>
+<gridsize name="28 pts (~10 mm)" value="28"/>
+<gridsize name="56 pts (~20 mm)" value="56"/>
+<anglesize name="90 deg" value="90"/>
+<anglesize name="60 deg" value="60"/>
+<anglesize name="45 deg" value="45"/>
+<anglesize name="30 deg" value="30"/>
+<anglesize name="22.5 deg" value="22.5"/>
+<opacity name="10%" value="0.1"/>
+<opacity name="30%" value="0.3"/>
+<opacity name="50%" value="0.5"/>
+<opacity name="75%" value="0.75"/>
+<tiling name="falling" angle="-60" step="4" width="1"/>
+<tiling name="rising" angle="30" step="4" width="1"/>
+</ipestyle>
+<ipestyle name="a3paper">
+<symbol name="arrow/arc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/farc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/ptarc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fptarc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="mark/circle(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</symbol>
+<symbol name="mark/disk(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+</path>
+</symbol>
+<symbol name="mark/fdisk(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+0.5 0 0 0.5 0 0 e
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</group>
+</symbol>
+<symbol name="mark/box(sx)" transformations="translations">
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</symbol>
+<symbol name="mark/square(sx)" transformations="translations">
+<path fill="sym-stroke">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+</path>
+</symbol>
+<symbol name="mark/fsquare(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+-0.5 -0.5 m
+0.5 -0.5 l
+0.5 0.5 l
+-0.5 0.5 l
+h
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="mark/cross(sx)" transformations="translations">
+<group>
+<path fill="sym-stroke">
+-0.43 -0.57 m
+0.57 0.43 l
+0.43 0.57 l
+-0.57 -0.43 l
+h
+</path>
+<path fill="sym-stroke">
+-0.43 0.57 m
+0.57 -0.43 l
+0.43 -0.57 l
+-0.57 0.43 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="arrow/fnormal(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/pointed(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fpointed(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/linear(spx)">
+<path stroke="sym-stroke" pen="sym-pen">
+-1 0.333 m
+0 0 l
+-1 -0.333 l
+</path>
+</symbol>
+<symbol name="arrow/fdouble(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/double(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-normal(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0.5 0 m
+-0.5 0.333 l
+-0.5 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-fnormal(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0.5 0 m
+-0.5 0.333 l
+-0.5 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-pointed(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0.5 0 m
+-0.5 0.333 l
+-0.3 0 l
+-0.5 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-fpointed(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0.5 0 m
+-0.5 0.333 l
+-0.3 0 l
+-0.5 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-double(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+1 0 m
+0 0.333 l
+0 -0.333 l
+h
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/mid-fdouble(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+1 0 m
+0 0.333 l
+0 -0.333 l
+h
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<pen name="heavier" value="0.8"/>
+<pen name="fat" value="1.2"/>
+<pen name="ultrafat" value="4"/>
+<symbolsize name="large" value="5"/>
+<symbolsize name="small" value="2"/>
+<symbolsize name="tiny" value="1.1"/>
+<arrowsize name="large" value="10"/>
+<arrowsize name="small" value="5"/>
+<arrowsize name="tiny" value="3"/>
+<color name="red" value="1 0 0"/>
+<color name="blue" value="0 0 1"/>
+<color name="green" value="0 1 0"/>
+<color name="yellow" value="1 1 0"/>
+<color name="orange" value="1 0.647 0"/>
+<color name="gold" value="1 0.843 0"/>
+<color name="purple" value="0.627 0.125 0.941"/>
+<color name="gray" value="0.745"/>
+<color name="brown" value="0.647 0.165 0.165"/>
+<color name="navy" value="0 0 0.502"/>
+<color name="pink" value="1 0.753 0.796"/>
+<color name="seagreen" value="0.18 0.545 0.341"/>
+<color name="turquoise" value="0.251 0.878 0.816"/>
+<color name="violet" value="0.933 0.51 0.933"/>
+<color name="darkblue" value="0 0 0.545"/>
+<color name="darkcyan" value="0 0.545 0.545"/>
+<color name="darkgray" value="0.663"/>
+<color name="darkgreen" value="0 0.392 0"/>
+<color name="darkmagenta" value="0.545 0 0.545"/>
+<color name="darkorange" value="1 0.549 0"/>
+<color name="darkred" value="0.545 0 0"/>
+<color name="lightblue" value="0.678 0.847 0.902"/>
+<color name="lightcyan" value="0.878 1 1"/>
+<color name="lightgray" value="0.98"/>
+<color name="lightgreen" value="0.565 0.933 0.565"/>
+<color name="lightyellow" value="1 1 0.878"/>
+<dashstyle name="dotted" value="[1 3] 0"/>
+<dashstyle name="dashed" value="[4] 0"/>
+<dashstyle name="dash dotted" value="[4 2 1 2] 0"/>
+<dashstyle name="dash dot dotted" value="[4 2 1 2 1 2] 0"/>
+<textsize name="large" value="\large"/>
+<textsize name="Large" value="\Large"/>
+<textsize name="LARGE" value="\LARGE"/>
+<textsize name="huge" value="\huge"/>
+<textsize name="Huge" value="\Huge"/>
+<textsize name="small" value="\small"/>
+<textsize name="footnote" value="\footnotesize"/>
+<textsize name="tiny" value="\tiny"/>
+<textstyle name="center" begin="\begin{center}" end="\end{center}"/>
+<textstyle name="itemize" begin="\begin{itemize}" end="\end{itemize}"/>
+<textstyle name="item" begin="\begin{itemize}\item{}" end="\end{itemize}"/>
+<gridsize name="4 pts" value="4"/>
+<gridsize name="8 pts (~3 mm)" value="8"/>
+<gridsize name="16 pts (~6 mm)" value="16"/>
+<gridsize name="32 pts (~12 mm)" value="32"/>
+<gridsize name="10 pts (~3.5 mm)" value="10"/>
+<gridsize name="20 pts (~7 mm)" value="20"/>
+<gridsize name="14 pts (~5 mm)" value="14"/>
+<gridsize name="28 pts (~10 mm)" value="28"/>
+<gridsize name="56 pts (~20 mm)" value="56"/>
+<anglesize name="90 deg" value="90"/>
+<anglesize name="60 deg" value="60"/>
+<anglesize name="45 deg" value="45"/>
+<anglesize name="30 deg" value="30"/>
+<anglesize name="22.5 deg" value="22.5"/>
+<opacity name="10%" value="0.1"/>
+<opacity name="30%" value="0.3"/>
+<opacity name="50%" value="0.5"/>
+<opacity name="75%" value="0.75"/>
+<layout paper="1361 842" origin="0 0" frame="1361 842"/>
+<tiling name="falling" angle="-60" step="4" width="1"/>
+<tiling name="rising" angle="30" step="4" width="1"/>
+</ipestyle>
+<page>
+<layer name="alpha"/>
+<view layers="alpha" active="alpha"/>
+<path layer="alpha" matrix="1 0 0 1 0 8" stroke="black" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<path matrix="1 0 0 1 364 -228" stroke="black">
+16 832 m
+16 832 l
+16 832 l
+16 832 l
+h
+</path>
+<text matrix="1 0 0 1 -140 -131.019" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="31.019" depth="26.09" valign="baseline">\begin{minipage}{6cm}
+\quelconque{Normales :} $A^\dag * A = A * A^\dag$ \\
+$\Leftrightarrow \; \exists P$ unitaire tq $P^{\dag} * A * P$ diagonale \\
+$\Leftrightarrow \; \spec(A) \subset U(1)$ \\
+$A$ et $B$ normales et $A * B = B * A$, \\
+\phantom{m} alors $A * B$ et $A + B$ sont normales
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 12" stroke="darkgray" pen="heavier">
+96 708 m
+96 644 l
+272 644 l
+272 708 l
+h
+</path>
+<text matrix="1 0 0 1 -108 -233.08" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="31.85" depth="26.92" valign="baseline">\begin{minipage}{6cm}
+%\begin{center}
+\evsev{Anti-symétriques :} $A^\rmT = -A$ \\
+$\Rightarrow \; \diag(A) \; \Rightarrow \; \tr(A) = 0$ \\
+$\Rightarrow \; \spec(A) \subset \mathbb{C} \backslash \mathbb{R}^\ast$ \\
+$\Rightarrow \; A^2 \preceq 0$ (négative semi-définie) \\
+$\Rightarrow \;$ Si $n$ impair, alors $\det(A) = 0$
+%\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 32 0" stroke="blue" pen="heavier">
+96 616 m
+96 552 l
+272 552 l
+272 616 l
+h
+</path>
+<text matrix="1 0 0 1 100 -248" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="19.438" depth="14.48" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\evsev{Symétriques :} $A^\rmT = A$ \\
+$A^k$ est symétrique \\
+{\footnotesize Si $A^{-1}$ existe, elle est sym. ssi $A$ est sym.}
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 32 -12" stroke="blue" pen="heavier">
+304 604 m
+304 564 l
+480 564 l
+480 604 l
+h
+</path>
+<path stroke="purple" pen="heavier">
+12 832 m
+12 800 l
+72 800 l
+72 832 l
+h
+</path>
+<text matrix="1 0 0 1 -20 0" transformations="translations" pos="32 816" stroke="black" type="label" width="56.693" height="13.164" depth="8.2" valign="baseline">\begin{minipage}[c]{2cm}
+\begin{center}
+\algebreaunc{Complexes} \\
+$\mathcal{M}_{n \times n}(\mathbb{C})$
+\end{center}
+\end{minipage}</text>
+<text matrix="1 0 0 1 -16 -452" transformations="translations" pos="32 816" stroke="black" type="label" width="47.821" height="13.164" depth="8.2" valign="baseline">\begin{minipage}[c]{48pt}
+\begin{center}
+\algebreaunc{Réelles} \\
+$\mathcal{M}_{n \times n}(\mathbb{R})$
+\end{center}
+\end{minipage}</text>
+<path stroke="purple" pen="heavier">
+12 380 m
+12 348 l
+72 348 l
+72 380 l
+h
+</path>
+<text matrix="1 0 0 1 -16 -796" transformations="translations" pos="32 816" stroke="black" type="label" width="47.821" height="13.164" depth="8.2" valign="baseline">\begin{minipage}[c]{48pt}
+\begin{center}
+\module{Entières} \\
+$\mathcal{M}_{n \times n}(\mathbb{Z})$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -4 -524" stroke="turquoise" pen="heavier">
+16 560 m
+16 532 l
+76 532 l
+76 560 l
+h
+</path>
+<text matrix="1 0 0 1 516 28" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="13.448" depth="8.47" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe spécial linéaire, $\mathrm{SL}(n, \mathbb{C})$} \\
+$\det(A) = 1$
+\end{center}
+\end{minipage}</text>
+<path stroke="red" pen="heavier">
+960 820 m
+960 792 l
+1136 792 l
+1136 820 l
+h
+</path>
+<text matrix="1 0 0 1 372 -64" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="31.353" depth="26.43" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe unitaire, $\mathrm{U}(n)$} \\
+Unitaires : $A^\dag * A = I_n = A * A^\dag$ \\
+$\Rightarrow | \det(A) | = 1$ \\
+$\Rightarrow \langle A * X | A * Y \rangle = \langle X | Y \rangle$ \\
+$\Rightarrow \exists H$ hermitienne tq $A = \exp(i * H)$ \\
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 64 0" stroke="red" pen="heavier">
+752 748 m
+752 684 l
+928 684 l
+928 748 l
+h
+</path>
+<text matrix="1 0 0 1 580 -80" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="13.448" depth="8.47" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe spécial unitaire, $\mathrm{SU}(n)$} \\
+$A^\dag * A = I_n = A * A^\dag$, et $\det(A) = 1$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 64 -16" stroke="red" pen="heavier">
+960 728 m
+960 700 l
+1136 700 l
+1136 728 l
+h
+</path>
+<text matrix="1 0 0 1 308 28" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="25.388" depth="20.44" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe général linéaire, $\mathrm{GL}(n, \mathbb{C})$} \\
+Inversibles (automorphismes) \\
+$A \, A^{-1} = I_n = A^{-1} \, A \; \Leftrightarrow \; \det(A) \neq 0$ \\
+$\Leftrightarrow \; \rang(A) = n \; \Leftrightarrow \; \ker(A) = \{0\}$ \\
+\end{center}
+\end{minipage}</text>
+<path stroke="red" pen="heavier">
+752 832 m
+752 780 l
+928 780 l
+928 832 l
+h
+</path>
+<text matrix="1 0 0 1 -172 -344" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="44.415" depth="39.52" valign="baseline">\begin{minipage}{6cm}
+%
+\begin{minipage}{6cm}
+\evsev{Anti-hermitiennes :} $A^\dag = \overline{A^\rmT} = - A$ \\
+$\Rightarrow \; \spec(A) \subset i \mathbb{R} \;\Rightarrow \; \diag(A) \subset i \mathbb{R}$ \\
+$\Rightarrow \; \Re(A)$ anti-herm. et $\Im(A)$ herm. \\
+$\Rightarrow \; A^{2k}$ herm. et $A^{2k+1}$ anti-herm. \\
+$\Rightarrow \; \exp(A)$ est unitaire
+\end{minipage}
+%
+\begin{minipage}{6cm}
+\begin{spacing}{.5}
+	{\footnotesize%
+		Cet espace forme l’algèbre de Lie $u(n)$ \\
+		et le groupe de Lie $\mathrm{U}(n)$
+	}
+\end{spacing}
+\end{minipage}
+%
+\end{minipage}</text>
+<path stroke="blue" pen="heavier">
+64 520 m
+64 436 l
+240 436 l
+240 520 l
+h
+</path>
+<text matrix="1 0 0 1 36 -356" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="55.885" depth="51.02" valign="baseline">\begin{minipage}{6cm}
+\evsev{Hermitiennes :} $A^\dag = \overline{A^\rmT} = A$ \\
+$\Rightarrow \; \spec(A) \subset \mathbb{R} \; \Rightarrow \; \diag(A) \subset \mathbb{R}$ \\
+$\Rightarrow \; \Re(A)$ herm. et $\Im(A)$ anti-herm. \\
+$\Rightarrow \; A^{k}$ est hermitienne \\
+$\Leftrightarrow \; \forall X, \; X^\dag * A * X = X^\dag * A^\dag * X \in \mathbb{R}$ \\
+$\Leftrightarrow \; \forall X, Y \; : \; \langle A X | Y \rangle = \langle X | A Y \rangle$ \\
+La forme sesquilin. $q(X, Y) = X^\dag * A * Y$ \\
+est symétrique : $q(X, Y) = q(Y, X)$ \\
+{\footnotesize Si $A, B$ herm., alors $A * B$ herm. ssi $A * B = B * A$}
+\end{minipage}</text>
+<path stroke="blue" pen="heavier">
+272 520 m
+272 408 l
+448 408 l
+448 520 l
+h
+</path>
+<text matrix="1 0 0 1 244 -344" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="43.02" depth="38.12" valign="baseline">\begin{minipage}{6cm}
+\quelconque{Positives (semi-définies) :} $A \succeq 0$ \\
+$\forall X, \; X^\dag * A * X \geq 0$ \\
+$\Rightarrow \; \spec(A) \subset \mathbb{R}_+\Rightarrow \; \tr(A) \geq 0$ \\
+$\Rightarrow \; \exists L$ triangulaire inférieure tq :\\
+$A = L * L^\dag$ (décomposition de Cholesky) \\
+$A \succeq 0$ et $\alpha \geq 0$, alors $\alpha * A \succeq 0$ \\
+$A, B \succeq 0$, alors $A + B \succeq 0$
+\end{minipage}</text>
+<path matrix="1 0 0 1 16 -40" stroke="darkgray" pen="heavier">
+464 560 m
+464 472 l
+640 472 l
+640 560 l
+h
+</path>
+<text matrix="1 0 0 1 452 -352" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="54.216" depth="49.34" valign="baseline">\begin{minipage}{6cm}
+\quelconque{Positives définies :} $A \succ 0$ \\
+$\forall X \neq 0, \; X^\dag * A * X &gt; 0$ \\
+$\langle X | Y \rangle = X^\dag * A * Y$ est un produit scalaire \\
+$\displaystyle \Rightarrow \; \spec(A) \subset \mathbb{R}_+^\ast \Rightarrow \left\{ \begin{array}{l} \tr(A) &gt; 0 \\ \det(A) \neq 0 \end{array} \right.$ \\
+Si $A \succ 0$ et $\alpha &gt; 0$, alors $\alpha * A \succ 0$ \\
+Si $A, B \succ 0$, alors $A + B \succ 0$ \\
+{\footnotesize Si $A, B \succ 0$, alors $A * B * A \succ 0$ et $B * A * B \succ 0$, \\
+\phantom{m} si $A * B = B * A$, alors $A * B \succ 0$}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -240 -84" stroke="darkgray" pen="heavier">
+928 604 m
+928 496 l
+1104 496 l
+1104 604 l
+h
+</path>
+<text matrix="1 0 0 1 308 -224" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="13.344" depth="8.38" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\algebreai{Diagonales} \\
+$A = (a_{ji}), \quad a_{ji} = 0 \quad \text{si} \quad j \neq i$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 32 4" stroke="violet" pen="heavier">
+512 604 m
+512 576 l
+688 576 l
+688 604 l
+h
+</path>
+<text matrix="1 0 0 1 452 -260" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="6.703" depth="1.71" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\algebrecc{Scalaires :} $A = \alpha * I_n$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -32 -36" stroke="pink" pen="heavier">
+720 604 m
+720 588 l
+896 588 l
+896 604 l
+h
+</path>
+<text matrix="1 0 0 1 68 -16" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="19.139" depth="14.18" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\quelconque{Non-inversibles} \\
+$\Leftrightarrow \det(A) = 0$ \\
+$\Leftrightarrow \rang(A) &lt; n \Leftrightarrow \dim \ker(A) &gt; 0$
+%{\footnotesize%
+%	$\det(A) = 0 \; \Leftrightarrow \; \rang(A) &lt; n \; \Leftrightarrow \; \dim \ker(A) &gt; 0$
+%}
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -32 40" stroke="darkgray" pen="heavier">
+336 784 m
+336 744 l
+512 744 l
+512 784 l
+h
+</path>
+<text matrix="1 0 0 1 276 -48" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="37.541" depth="32.63" valign="baseline">\begin{minipage}{6cm}
+\quelconque{Nilpotentes :} $A^k = 0, \; 1 \leq k \leq n$ \\
+$\Rightarrow \; \spec(A) = \{0\} \; \Rightarrow \; \det(A) = 0$ \\
+$\Rightarrow \; \tr(A^k) = 0, \; \forall k \geq 1$ \\
+$\Rightarrow \; c_A(t) = \det(t * I_n - A) = t^n$ \\
+$\Rightarrow \; m_A(t) = t^p, \; p \leq n$ \\
+Seule $0_n$ est nilpotente et diagonalisable
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 56" stroke="darkgray" pen="heavier">
+512 752 m
+512 676 l
+688 676 l
+688 752 l
+h
+</path>
+<text matrix="1 0 0 1 724 4" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="49.105" depth="44.23" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe simplectique, $\mathrm{GL}(2k, \mathbb{C})$} \\
+$A^\dag * \Omega * A = \Omega$, avec \\
+$\Omega = \begin{pmatrix} 0 &amp; I_k \\ -I_k &amp; 0 \end{pmatrix}$, \quad $\Omega^2 = - I_{2k}$ \\
+$A^{-1} = \Omega^{-1} * A^\dag * \Omega = - \Omega * A^\dag * \Omega$ \\
+{\scriptsize
+Un $\mathbb{C}$-ev simplectique (càd muni d’une forme bilinéaire antisymétrique non-dégénérée $\omega$), alors une transformation simplectique $f$ est tq \\
+$\omega(f(x), f(y)) = \omega(x, y), \; \forall x, y$
+}
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -4 4" stroke="red" pen="heavier">
+1172 828 m
+1172 728 l
+1348 728 l
+1348 828 l
+h
+</path>
+<text matrix="1 0 0 1 -140 -632" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="49.755" depth="44.88" valign="baseline">\begin{minipage}{6cm}
+\evsev{Réelles anti-symétriques} $A = - A^\rmT$ \\
+$\Rightarrow \; \diag(A)$ nulle, donc $\tr(A) = 0$ \\
+$\Rightarrow \; \spec(A) \subset \mathbb{C} \backslash \mathbb{R}^\ast$ \\
+$\Rightarrow \; A^2 \preceq 0$ (négative semi-définie) \\
+$\Rightarrow \;$ Si $n$ impair, alors $\det(A) = 0$ \\
+$\Rightarrow \; A + I_n$ est inversible \\
+$\Rightarrow \; A^{2k}$ sym. et $A^{2k+1}$ anti-sym. \\
+$\Rightarrow \; \exp(A)$ est orthogonale %\\
+%Cet espace forme \\
+%\phantom{m} l’algèbre de Lie $o(n)$, \\
+%\phantom{m} le groupe de Lie $\mathrm{O}(n)$.
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -4" stroke="blue" pen="heavier">
+96 240 m
+96 140 l
+272 140 l
+272 240 l
+h
+</path>
+<text matrix="1 0 0 1 68 -632" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="37.541" depth="32.63" valign="baseline">\begin{minipage}{6cm}
+\evsev{Réelles symétriques :} $A = A^\rmT$ \\
+La forme bilinéaire $q(X, Y) = X^\rmT * A * Y$ \\
+est symétrique : $q(X, Y) = q(Y, X)$ \\
+$\Rightarrow \; \spec(A) \subset \mathbb{R}$ \\
+$\Rightarrow \; A^{k}$ est symétrique \\
+$\Leftrightarrow \; A^{-1}$ symétrique si existance
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -84" stroke="blue" pen="heavier">
+304 308 m
+304 232 l
+480 232 l
+480 308 l
+h
+</path>
+<text matrix="1 0 0 1 516 -584" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="13.448" depth="8.47" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe spécial linéaire, $\mathrm{SL}(n, \mathbb{R})$} \\
+$\det(A) = 1$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -172" stroke="red" pen="heavier">
+960 380 m
+960 352 l
+1136 352 l
+1136 380 l
+h
+</path>
+<text matrix="1 0 0 1 308 -496" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="25.388" depth="20.44" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe orthogonal, $\mathrm{O}(n)$} \\
+Orthogonales : $A^\rmT * A = I_n = A * A^\rmT$ \\
+$\Rightarrow \; \det(A) = \pm 1$ \\
+$\Rightarrow \; \langle A * X | A * Y \rangle = \langle X | Y \rangle$ \\
+%$\Rightarrow \; \det(A) = \pm 1$ et $\langle A * X | A * Y \rangle = \langle X | Y \rangle$ \\
+\end{center}
+\end{minipage}</text>
+<path stroke="red" pen="heavier">
+752 308 m
+752 256 l
+928 256 l
+928 308 l
+h
+</path>
+<text matrix="1 0 0 1 516 -644" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="13.448" depth="8.47" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe spécial orthogonal, $\mathrm{SO}(n)$} \\
+Rotations, $\det(A) = 1$ \\
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -32 -136" stroke="red" pen="heavier">
+992 284 m
+992 256 l
+1168 256 l
+1168 284 l
+h
+</path>
+<text matrix="1 0 0 1 308 -420" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="18.917" depth="13.96" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe général linéaire, $\mathrm{GL}(n, \mathbb{R})$} \\
+Réelles inversibles : $A \, A^{-1} = I_n = A^{-1} \, A$ \\
+\end{center}
+\end{minipage}</text>
+<path stroke="red" pen="heavier">
+752 380 m
+752 340 l
+928 340 l
+928 380 l
+h
+</path>
+<text matrix="1 0 0 1 276 -676" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="30.113" depth="25.18" valign="baseline">\begin{minipage}{6cm}
+\quelconque{Réelles positives (semi-déf.)} $A \succeq 0$ \\
+$\forall X, \; X^\rmT * A * X \geq 0$ \\
+$\Rightarrow \; \exists L$ triangulaire inférieure tq :\\
+$A = L * L^\rmT$ (décomposition de Cholesky) \\
+$\Leftrightarrow \; \exists! B$ racine carrée de $A$ : $B^2 = A$
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -4" stroke="darkgray" pen="heavier">
+512 176 m
+512 116 l
+688 116 l
+688 176 l
+h
+</path>
+<text matrix="1 0 0 1 484 -676" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="30.806" depth="25.87" valign="baseline">\begin{minipage}{6cm}
+\quelconque{Réelles positives définies :} $A \succ 0$ \\
+$\forall X \neq 0, \; X^\rmT * A * X &gt; 0$ \\
+$A$ est inversible, et $A^{-1}$ est pos-déf \\
+{\small $\langle X | Y \rangle = X^\rmT * A * Y$ est un produit scalaire} \\
+Si $A \succeq B \succ 0$, alors $B^{-1} \succeq A^{-1} \succ 0$
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -4" stroke="darkgray" pen="heavier">
+720 176 m
+720 116 l
+896 116 l
+896 176 l
+h
+</path>
+<text matrix="1 0 0 1 276 -600" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="13.344" depth="8.38" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\algebreai{Réelles diagonales} \\
+$A = (a_{ji}), \quad a_{ji} = 0 \quad \text{si} \quad j \neq i$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -76" stroke="violet" pen="heavier">
+512 308 m
+512 280 l
+688 280 l
+688 308 l
+h
+</path>
+<text matrix="1 0 0 1 484 -608" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="6.703" depth="1.71" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\algebrecc{Réelles scalaires :} $A = \alpha * I_n$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 208 -28" stroke="pink" pen="heavier">
+512 248 m
+512 232 l
+688 232 l
+688 248 l
+h
+</path>
+<text matrix="1 0 0 1 68 -460" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="7.473" depth="2.49" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\quelconque{Réelles non-inversibles} $\det(A) = 0$
+\end{center}
+\end{minipage}</text>
+<path stroke="darkgray" pen="heavier">
+304 368 m
+304 348 l
+480 348 l
+480 368 l
+h
+</path>
+<text matrix="1 0 0 1 276 -472" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="7.685" depth="2.71" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\quelconque{Réelles nilpotentes :} $A^k = 0, \; k \leq n$
+\end{center}
+\end{minipage}</text>
+<path stroke="darkgray" pen="heavier">
+512 356 m
+512 336 l
+688 336 l
+688 356 l
+h
+</path>
+<text matrix="1 0 0 1 732 -608" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="49.105" depth="44.23" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe simplectique, $\mathrm{GL}(2k, \mathbb{R})$} \\
+$A^\rmT * \Omega * A = \Omega$, avec \\
+$\Omega = \begin{pmatrix} 0 &amp; I_k \\ -I_k &amp; 0 \end{pmatrix}$, \quad $\Omega^2 = - I_{2k}$ \\
+$A^{-1} = \Omega^{-1} * A^\rmT * \Omega = - \Omega * A^\rmT * \Omega$ \\
+{\scriptsize
+Un $\mathbb{R}$-ev simplectique (càd muni d’une forme bilinéaire antisymétrique non-dégénérée $\omega$), alors une transformation simplectique $f$ est tq \\
+$\omega(f(x), f(y)) = \omega(x, y), \; \forall x, y$
+}
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 8 -164" stroke="red" pen="heavier">
+1168 384 m
+1168 284 l
+1344 284 l
+1344 384 l
+h
+</path>
+<text matrix="1 0 0 1 -144 -472" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="6.926" depth="1.93" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\quelconque{Réelles diagonalisables}
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -4" stroke="darkgray" pen="heavier">
+96 360 m
+96 344 l
+272 344 l
+272 360 l
+h
+</path>
+<text matrix="1 0 0 1 164 -104" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="24.634" depth="19.7" valign="baseline">\begin{minipage}{6cm}
+\quelconque{Involutives :} $A * A = I_n$ \\
+$\Rightarrow \; |\det(A)| = 1$ \\
+$\Leftrightarrow \; (A + I_n)/2$ est idempotente \\
+{\footnotesize Si $A$ et $B$ inv., alors $A * B$ inv. ssi commutent}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -560 0" stroke="darkgray" pen="heavier">
+1168 700 m
+1168 648 l
+1344 648 l
+1344 700 l
+h
+</path>
+<text matrix="1 0 0 1 -140 -88" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="60.738" depth="55.88" valign="baseline">\begin{minipage}{6cm}
+\quelconque{Idempotentes (project${}^\circ$) :} $A A = A$ \\
+$\Rightarrow \; \spec(A) \subseteq \{0, 1\}$ \\
+\phantom{m} $\Rightarrow \; \det(A) \in \{0, 1\}$ \\
+\phantom{m} $\Rightarrow \; \tr(A) = \rang(A) &lt; n$ \\
+Seule $I_n$ est idempotente et inversible \\
+$\Leftrightarrow \; A^k = A, \; \forall k \leq 1$ \\
+$\Rightarrow \; A$ est diagonalisable \\
+$\Leftrightarrow \; 2 * A - I_n$ est involutive \\
+Si $A$ idemp., alors $I_n - A$ idemp. \\
+{\footnotesize $A$, $B$ idemp., alors $A * B$ idemp. ssi commutent}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -16 -64" stroke="darkgray" pen="heavier">
+320 816 m
+320 696 l
+496 696 l
+496 816 l
+h
+</path>
+<text matrix="1 0 0 1 304 -748" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="13.448" depth="8.47" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Matrices unimodulaires, $\mathrm{GL}(n, \mathbb{Z})$} \\
+Entières inversibles, $\det(A) = \pm 1$ \\
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 32 -180" stroke="red" pen="heavier">
+720 224 m
+720 196 l
+896 196 l
+896 224 l
+h
+</path>
+<text matrix="1 0 0 1 516 -720" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="30.806" depth="25.87" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe des permutations, $S_n$} \\
+Un seul $1$ par ligne/colonnes, $0$ ailleurs \\
+$\det(A) = \pm 1$ \\
+$P * A$ permute les lignes de $A$ \\
+$A * P$ permute les colonnes de $A$ \\
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -8 -136" stroke="red" pen="heavier">
+968 224 m
+968 164 l
+1144 164 l
+1144 224 l
+h
+</path>
+<text matrix="1 0 0 1 -40 -728" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="14.099" depth="9.12" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\monoide{Bistochastiques} \\
+$A = (a_{ij})$ tq $\sum_i a_{ij} = \sum_j a_{ij} = 1$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -904 -40" stroke="seagreen" pen="heavier">
+1104 144 m
+1104 116 l
+1280 116 l
+1280 144 l
+h
+</path>
+<text matrix="1 0 0 1 720 -704" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="13.164" depth="8.2" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe permutations paires, $A_n$} \\
+$\det(A) = 1$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 120 -52" stroke="red" pen="heavier">
+1048 140 m
+1048 112 l
+1224 112 l
+1224 140 l
+h
+</path>
+<text matrix="1 0 0 1 724 -748" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="12.942" depth="7.98" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\groupe{Groupe trivial, $\{I_n\}$} \\
+Matrice identité $I_n$ \\
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 120 -20" stroke="red" pen="heavier">
+1048 64 m
+1048 36 l
+1224 36 l
+1224 64 l
+h
+</path>
+<text matrix="1 0 0 1 -36 -788" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="12.942" depth="7.98" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\algebreaunc{Algèbre triviale, $\{0_n\}$} \\
+Matrice nulle $0_n$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 104 -20" stroke="purple" pen="heavier">
+96 64 m
+96 36 l
+272 36 l
+272 64 l
+h
+</path>
+<text matrix="1 0 0 1 -140 -40" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="32.277" depth="27.36" valign="baseline">\begin{minipage}{6cm}
+%
+\begin{minipage}{6cm}
+\begin{center}
+\quelconque{Diagonalisables} \\
+$\exists ! P$ inversible tq : $P^{-1} \, A \, P$ diagonale \\
+\end{center}
+\end{minipage}
+%
+\begin{minipage}{6cm}
+\begin{center}
+{\footnotesize%
+	\begin{spacing}{.5}
+		$A$ et $B$ diagonalisable $\not\Rightarrow A + B$ diagonalisable \\
+		Denses dans $\mathcal{M}_{n \times n}(\mathbb{C})$ \\
+		L’ensemble des matrices non-diagonalisables est de mesure nulle (au sens de Lebesgue)
+	\end{spacing}
+}
+\end{center}
+\end{minipage}
+%
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -4" stroke="darkgray" pen="heavier">
+96 816 m
+96 756 l
+272 756 l
+272 816 l
+h
+</path>
+<path stroke="black" fill="1" pen="heavier">
+72 828 m
+752 828 l
+</path>
+<path stroke="black" pen="heavier">
+840 780 m
+840 748 l
+</path>
+<path matrix="1 0 0 1 64 -20" stroke="black" pen="heavier">
+928 716 m
+960 716 l
+</path>
+<path stroke="black" pen="heavier">
+928 808 m
+960 808 l
+</path>
+<path stroke="black" pen="heavier">
+1048 792 m
+1048 712 l
+</path>
+<path matrix="1 0 0 1 0 -12" stroke="black" pen="heavier">
+1136 808 m
+1168 808 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" pen="heavier">
+72 808 m
+96 808 l
+</path>
+<path stroke="black" pen="heavier">
+304 816 m
+72 816 l
+</path>
+<path matrix="1 0 0 1 0 12" stroke="black" pen="heavier">
+184 740 m
+184 708 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" pen="heavier">
+72 368 m
+304 368 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" pen="heavier">
+72 356 m
+96 356 l
+</path>
+<path matrix="1 0 0 1 0 -400" stroke="blue" pen="heavier">
+272 584 m
+304 584 l
+</path>
+<path stroke="black" pen="heavier">
+768 780 m
+768 700 l
+</path>
+<path matrix="1 0 0 1 0 8" stroke="black" pen="heavier">
+5.65685 0 0 5.65685 720 808 e
+</path>
+<path matrix="1 0 0 1 0.0666769 9.36996" stroke="black" pen="heavier">
+717.432 805.202 m
+2.58108 0 0 2.58108 719.995 805.501 722.576 805.507 a
+</path>
+<path matrix="1 0 0 1 0.0176997 8.97688" stroke="black" pen="heavier">
+717.511 805.538 m
+717.435 810.33 l
+</path>
+<path matrix="1 0 0 1 0.0176997 8.97688" stroke="black" pen="heavier">
+722.659 805.805 m
+722.647 810.333 l
+</path>
+<path matrix="1 0 0 1 8 12" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 8 24" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 8 36" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 -608 816" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" pen="heavier">
+184 656 m
+184 616 l
+</path>
+<path matrix="0 -1 1 0 -608 720" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" pen="heavier">
+104 654.891 m
+104 520 l
+</path>
+<path matrix="0 -1 1 0 -688 718.891" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 -672 718.891" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" fill="white" pen="heavier">
+120 654.891 m
+120 536 l
+</path>
+<path stroke="black" fill="white" pen="heavier">
+120 536 m
+360 536 l
+</path>
+<path stroke="black" fill="white" pen="heavier">
+360 536 m
+360 520 l
+</path>
+<path stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 384 -316" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 208 0" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 592 -316" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 -452" stroke="black" fill="1" pen="heavier">
+72 828 m
+752 828 l
+</path>
+<path matrix="1 0 0 1 8 -416" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" fill="white" pen="heavier">
+480 816 m
+712 816 l
+</path>
+<path stroke="black" fill="white" pen="heavier">
+728 816 m
+752 816 l
+</path>
+<path matrix="1 0 0 1 0 -8" stroke="black" fill="white" pen="heavier">
+480 796 m
+512 796 l
+</path>
+<path matrix="1 0 0 1 416 -4" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" fill="white" pen="heavier">
+272 768 m
+392 768 l
+</path>
+<path matrix="1 0 0 1 208 -24" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" fill="white" pen="heavier">
+392 768 m
+392 752 l
+</path>
+<path matrix="1 0 0 1 -168 -132" stroke="darkgray" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<path stroke="darkgray" fill="white" pen="heavier">
+480 676 m
+544 676 l
+</path>
+<path stroke="darkgray" fill="white" pen="heavier">
+560 676 m
+608 676 l
+</path>
+<text matrix="1 0 0 1 -176 -136" transformations="translations" pos="720 808" stroke="black" type="label" width="13.549" height="6.653" depth="0" valign="baseline">{\Large\quelconque{$\,\simeq$}}</text>
+<path matrix="0 -1 1 0 -24 844" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 48 844" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 256 856" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 864 16" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 928 -96" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 1072 4" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 -564 720" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" fill="white" pen="heavier">
+228 656 m
+228 620 l
+228 624 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" fill="white" pen="heavier">
+228 624 m
+796 624 l
+</path>
+<path stroke="black" fill="white" pen="heavier">
+832 620 m
+832 684 l
+</path>
+<path matrix="1 0 0 1 64 112" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 448 -204" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 4" stroke="gold" fill="white" dash="dashed" pen="ultrafat">
+4 392 m
+1360 392 l
+</path>
+<path matrix="1 0 0 1 8 -428" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 8 -440" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<text matrix="1 0 0 1 -140 -531.019" transformations="translations" pos="240 816" stroke="black" type="label" width="170.079" height="19.909" depth="14.95" valign="baseline">\begin{minipage}{6cm}
+\quelconque{Réelles normales :} $A^\rmT * A = A * A^\rmT$ \\
+$\Leftrightarrow \; \exists P$ orthogonale tq $P^{\rmT} * A * P$ diag. \\
+$\Leftrightarrow \; \spec(A) \subset U(1)$
+\end{minipage}</text>
+<path matrix="1 0 0 1 72 -12" stroke="darkgray" pen="heavier">
+24 320 m
+24 280 l
+200 280 l
+200 320 l
+h
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" pen="heavier">
+184 344 m
+184 312 l
+</path>
+<path matrix="0 -1 1 0 -608 404" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 32 -124" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 416 -440" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 -444" stroke="black" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<path matrix="1 0 0 1 0 -444" stroke="black" pen="heavier">
+5.65685 0 0 5.65685 720 808 e
+</path>
+<path matrix="1 0 0 1 0.0666769 -442.63" stroke="black" pen="heavier">
+717.432 805.202 m
+2.58108 0 0 2.58108 719.995 805.501 722.576 805.507 a
+</path>
+<path matrix="1 0 0 1 0.0176997 -443.023" stroke="black" pen="heavier">
+717.511 805.538 m
+717.435 810.33 l
+</path>
+<path matrix="1 0 0 1 0.0176997 -443.023" stroke="black" pen="heavier">
+722.659 805.805 m
+722.647 810.333 l
+</path>
+<path matrix="1 0 0 1 0 -452" stroke="black" fill="white" pen="heavier">
+480 816 m
+712 816 l
+</path>
+<path matrix="1 0 0 1 0 -452" stroke="black" fill="white" pen="heavier">
+728 816 m
+752 816 l
+</path>
+<path stroke="black" pen="heavier">
+928 352 m
+952 352 l
+</path>
+<path matrix="1 0 0 1 864 -440" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" pen="heavier">
+928 280 m
+944 280 l
+</path>
+<path matrix="1 0 0 1 864 -512" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 32 -440" stroke="black" pen="heavier">
+840 780 m
+840 748 l
+</path>
+<path matrix="0 -1 1 0 80 404" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 -32 0" stroke="black" pen="heavier">
+1080 180 m
+1080 148 l
+</path>
+<path matrix="0 -1 1 0 256 244" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 -176" stroke="black" pen="heavier">
+1136 360 m
+1176 360 l
+</path>
+<path matrix="1 0 0 1 1072 -608" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 128 320" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 480 -436" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 864 -752" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 688 -412" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 1072 -728" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+40 800 m
+40 380 l
+</path>
+<path matrix="0 -1 1 0 -752 864" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<text matrix="1 0 0 1 68 -508" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="6.703" depth="1.71" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\quelconque{Réelles involutives :} $A * A = I_n$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -44 -40" stroke="darkgray" pen="heavier">
+556 320 m
+556 304 l
+732 304 l
+732 320 l
+h
+</path>
+<text matrix="1 0 0 1 -140 -472" transformations="translations" pos="448 776" stroke="black" type="label" width="170.079" height="12.197" depth="7.23" valign="baseline">\begin{minipage}{6cm}
+\begin{center}
+\quelconque{R. idempotentes (projections)} \\
+$A A = A$
+\end{center}
+\end{minipage}</text>
+<path matrix="1 0 0 1 -4 -16" stroke="darkgray" pen="heavier">
+308 336 m
+308 308 l
+484 308 l
+484 336 l
+h
+</path>
+<path matrix="1 0 0 1 -184 -492" stroke="darkgray" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<path stroke="darkgray" fill="white" pen="heavier">
+480 316 m
+528 316 l
+</path>
+<text matrix="1 0 0 1 -192 -496" transformations="translations" pos="720 808" stroke="black" type="label" width="13.549" height="6.653" depth="0" valign="baseline">{\Large\quelconque{$\,\simeq$}}</text>
+<path matrix="1 0 0 1 -24 -76" stroke="black" pen="heavier">
+184 344 m
+184 312 l
+</path>
+<path matrix="0 -1 1 0 -632 332" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 -432 -624" stroke="blue" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<text matrix="1 0 0 1 -440 -628" transformations="translations" pos="720 808" stroke="black" type="label" width="13.549" height="8.374" depth="1.19" valign="baseline">{\Large\evsev{$\,\oplus$}}</text>
+<path matrix="1 0 0 1 -32 -112" stroke="blue" pen="heavier">
+272 584 m
+304 584 l
+</path>
+<path matrix="1 0 0 1 -464 -336" stroke="blue" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<text matrix="1 0 0 1 -472 -340" transformations="translations" pos="720 808" stroke="black" type="label" width="13.549" height="8.374" depth="1.19" valign="baseline">{\Large\evsev{$\,\oplus$}}</text>
+<path matrix="1 0 0 1 32 -316" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 416 -632" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 240 -340" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 624 -656" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" pen="heavier">
+256 340 m
+256 328 l
+</path>
+<path matrix="0 -1 1 0 -536 404" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" fill="white" pen="heavier">
+256 328 m
+392 328 l
+392 328 l
+</path>
+<path stroke="black" fill="white" pen="heavier">
+392 328 m
+392 320 l
+</path>
+<path stroke="black" pen="heavier">
+800 780 m
+800 572 l
+</path>
+<path matrix="0 -1 1 0 8 844" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" fill="white" pen="heavier">
+756 340 m
+756 320 l
+</path>
+<path stroke="black" pen="heavier">
+768 340 m
+768 312 l
+</path>
+<path matrix="0 -1 1 0 -24 404" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" fill="white" pen="heavier">
+920 44 m
+920 256 l
+</path>
+<path matrix="1 0 0 1 32 -260" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 416 -576" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 240 -268" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path matrix="1 0 0 1 624 -584" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 -16" stroke="black" pen="heavier">
+1256 76 m
+1256 60 l
+</path>
+<path matrix="0 -1 1 0 464 124" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" fill="white" dash="dashed" pen="ultrafat">
+944 60 m
+944 96 l
+</path>
+<path matrix="1 0 0 1 0 -36" stroke="gold" fill="white" dash="dashed" pen="ultrafat">
+944 132 m
+1360 132 l
+</path>
+<path stroke="gold" fill="white" dash="dashed" pen="ultrafat">
+944 60 m
+0 60 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" pen="heavier">
+72 36 m
+200 36 l
+</path>
+<path matrix="1 0 0 1 8 -760" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" pen="heavier">
+72 16 m
+840 16 l
+</path>
+<path matrix="1 0 0 1 8 -780" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" fill="white">
+0 842 m
+532.833 842 l
+</path>
+<path stroke="black" fill="white">
+1361 842 m
+0 842 l
+</path>
+<path stroke="black" fill="white">
+0 842 m
+0 0 l
+</path>
+<path stroke="black" fill="white">
+0 0 m
+1361 0 l
+</path>
+<path stroke="black" fill="white">
+1361 0 m
+1361 842 l
+</path>
+<path matrix="1 0 0 1 -16 0" stroke="black" pen="heavier">
+1064 120 m
+1064 88 l
+</path>
+<path matrix="0 -1 1 0 256 184" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" fill="white" pen="heavier">
+768 204 m
+768 176 l
+</path>
+<path stroke="black" pen="heavier">
+40 348 m
+40 36 l
+</path>
+<path matrix="0 -1 1 0 -752 412" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" pen="heavier">
+56 348 m
+56 80 l
+</path>
+<path matrix="0 -1 1 0 -736 412" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 -16" stroke="black" fill="white" pen="heavier">
+56 96 m
+200 96 l
+</path>
+<path stroke="black" pen="heavier">
+288 48 m
+916 48 l
+</path>
+<path matrix="1 0 0 1 0 -44" stroke="black" fill="white" pen="heavier">
+924 92 m
+960 92 l
+</path>
+<path matrix="1 0 0 1 208 80" stroke="black" pen="heavier">
+448 476 m
+480 476 l
+</path>
+<path stroke="black" fill="white" pen="heavier">
+800 548 m
+800 520 l
+</path>
+<path matrix="1 0 0 1 -48 -76" stroke="black" pen="heavier">
+256 344 m
+256 328 l
+</path>
+<path matrix="0 -1 1 0 -584 332" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" fill="white" pen="heavier">
+208 256 m
+392 256 l
+344 256 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="black" fill="white" pen="heavier">
+392 256 m
+392 228 l
+</path>
+<path matrix="1 0 0 1 32 -12" stroke="blue" pen="heavier">
+272 584 m
+304 584 l
+</path>
+<path matrix="1 0 0 1 -400 -236" stroke="blue" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<text matrix="1 0 0 1 -408 -240" transformations="translations" pos="720 808" stroke="black" type="label" width="13.549" height="8.374" depth="1.19" valign="baseline">{\Large\evsev{$\,\oplus$}}</text>
+<text matrix="1 0 0 1 0 -12" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="11.85" depth="6.88" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 0 -104" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="11.85" depth="6.88" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 208 -72" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="11.85" depth="6.88" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 208 -12" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.227" depth="7.25" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \not\ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 416 -16" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.227" depth="7.25" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \not\ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 308 -124" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+\begin{flushright}
+{\small%
+\quelconque{%
+$0_n \not\in \mathrel{\mspace{3mu}}$ \\
+$I_n \in \!$
+}
+}
+\end{flushright}
+\end{minipage}</text>
+<text matrix="1 0 0 1 656 8" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\groupe{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 720 -76" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\groupe{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 928 -112" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\groupe{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 864 -4" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\groupe{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 868 -72" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+\begin{flushright}
+{\small%
+\groupe{%
+$0_n \not\in \mathrel{\mspace{3mu}}$ \\
+$I_n \in \!$
+}
+}
+\end{flushright}
+\end{minipage}</text>
+<text matrix="1 0 0 1 32 -216" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="19.701" depth="14.74" valign="baseline">\begin{minipage}{2cm}
+{\small%
+\evsev{%
+$\mathrel{\mspace{2mu}} d = \tfrac{n(n-1)}{2}$ \\
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \not\ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 448 -228" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="23.294" depth="18.35" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\algebreai{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$ \\
+$\mathrel{\mspace{2mu}} d = n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 384 -304" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="11.85" depth="6.88" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 592 -304" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 -260 -772" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="14.837" depth="9.87" valign="baseline">\begin{minipage}{2cm}
+\begin{spacing}{.75}
+{\small%
+	\module{%
+		$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+		$\mathrel{\mspace{2mu}} \ni I_n$%
+	}%
+}%
+\end{spacing}
+\end{minipage}</text>
+<text matrix="1 0 0 1 0.06394 -466.352" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="11.85" depth="6.88" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 0 -516" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="11.85" depth="6.88" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 416 -652" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="11.85" depth="6.88" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 624 -652" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 656 -444" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\groupe{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 416 -468.227" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.227" depth="7.25" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \not\ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 208 -512" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="11.85" depth="6.88" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\quelconque{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 92 -472" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="6.48" depth="1.49" valign="baseline">\begin{minipage}{2cm}
+{\small%
+	\quelconque{%
+		%\rotatebox{270}{%
+			$\mathrel{\mspace{2mu}} \ni 0_n$%
+		%}
+		\hspace{1em}%
+		$\mathrel{\mspace{2mu}} \not\ni I_n$%
+	}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 656 -516" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\groupe{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 864 -616" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\groupe{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 876 -652" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+\begin{flushright}
+{\small%
+\groupe{%
+$0_n \not\in \mathrel{\mspace{3mu}}$ \\
+$I_n \in \!$
+}
+}
+\end{flushright}
+\end{minipage}</text>
+<text matrix="1 0 0 1 656 -792" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\groupe{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 864 -764" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\groupe{%
+$\mathrel{\mspace{2mu}} \not\ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 868 -736" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+\begin{flushright}
+{\small%
+\groupe{%
+$0_n \not\in \mathrel{\mspace{3mu}}$ \\
+$I_n \in \!$
+}
+}
+\end{flushright}
+\end{minipage}</text>
+<text matrix="1 0 0 1 868 -788" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+\begin{flushright}
+{\small%
+\groupe{%
+$0_n \not\in \mathrel{\mspace{3mu}}$ \\
+$I_n \in \!$
+}
+}
+\end{flushright}
+\end{minipage}</text>
+<text matrix="1 0 0 1 104 -780" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.227" depth="7.25" valign="baseline">\begin{minipage}{1cm}
+{\small%
+\algebreaunc{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \not\ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 -100 -720" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+\begin{flushright}
+{\small%
+\monoide{%
+$0_n \not\in \mathrel{\mspace{3mu}}$ \\
+$I_n \in \!$
+}
+}
+\end{flushright}
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -4" stroke="black" pen="heavier">
+804 624 m
+832 624 l
+</path>
+<path stroke="gold" pen="heavier">
+1328 732 m
+1328 664 l
+</path>
+<path stroke="gold" pen="heavier">
+1112 684 m
+1112 664 l
+</path>
+<path stroke="gold" pen="heavier">
+1112 176 m
+1112 148 l
+</path>
+<path stroke="gold" pen="heavier">
+1064 208 m
+1064 224 l
+</path>
+<path stroke="gold" pen="heavier">
+1064 716 m
+1064 792 l
+</path>
+<path matrix="0 -1 1 0 272 856" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 320 748" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 536 796" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+896 780 m
+896 752 l
+</path>
+<path stroke="gold" pen="heavier">
+896 680 m
+896 380 l
+</path>
+<path stroke="gold" pen="heavier">
+912 684 m
+912 384 l
+</path>
+<path stroke="gold" pen="heavier">
+912 336 m
+912 308 l
+</path>
+<path matrix="0 -1 1 0 120 748" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 104 844" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+840 552 m
+840 524 l
+</path>
+<path stroke="gold" pen="heavier">
+840 408 m
+840 384 l
+</path>
+<path stroke="gold" pen="heavier">
+840 336 m
+840 312 l
+</path>
+<path stroke="gold" pen="heavier">
+840 252 m
+840 220 l
+</path>
+<path stroke="gold" pen="heavier">
+632 580 m
+632 524 l
+</path>
+<path stroke="gold" pen="heavier">
+632 428 m
+632 380 l
+</path>
+<path stroke="gold" pen="heavier">
+632 372 m
+632 368 l
+</path>
+<path stroke="gold" pen="heavier">
+632 332 m
+632 284 l
+</path>
+<path stroke="gold" pen="heavier">
+632 260 m
+632 232 l
+</path>
+<path stroke="gold" pen="heavier">
+776 412 m
+776 384 l
+</path>
+<path stroke="gold" pen="heavier">
+776 336 m
+776 312 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="pink" pen="heavier">
+776 204 m
+776 176 l
+</path>
+<path stroke="gold" pen="heavier">
+568 432 m
+568 380 l
+</path>
+<path stroke="gold" pen="heavier">
+568 372 m
+568 368 l
+</path>
+<path stroke="gold" pen="heavier">
+568 332 m
+568 284 l
+</path>
+<path stroke="gold" pen="heavier">
+568 260 m
+568 236 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="pink" pen="heavier">
+568 204 m
+568 176 l
+</path>
+<path matrix="0 -1 1 0 48 616" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 -224 496" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 -16 476" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 -160 644" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+472 344 m
+472 324 l
+</path>
+<path stroke="gold" pen="heavier">
+472 288 m
+472 228 l
+</path>
+<path stroke="gold" pen="heavier">
+360 408 m
+360 380 l
+</path>
+<path stroke="gold" pen="heavier">
+360 344 m
+360 332 l
+</path>
+<path stroke="gold" pen="heavier">
+360 288 m
+360 260 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="pink" pen="heavier">
+360 252 m
+360 228 l
+</path>
+<path matrix="0 -1 1 0 -320 616" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 -432 472" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+264 532 m
+264 484 l
+</path>
+<path stroke="gold" pen="heavier">
+264 460 m
+264 380 l
+</path>
+<path stroke="gold" pen="heavier">
+264 372 m
+264 368 l
+</path>
+<path stroke="gold" pen="heavier">
+264 336 m
+264 332 l
+</path>
+<path stroke="gold" pen="heavier">
+264 324 m
+264 312 l
+</path>
+<path stroke="gold" pen="heavier">
+152 436 m
+152 380 l
+</path>
+<path stroke="gold" pen="heavier">
+152 372 m
+152 368 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="pink" pen="heavier">
+152 340 m
+152 316 l
+</path>
+<path matrix="0 -1 1 0 -528 616" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="0 -1 1 0 -640 500" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="pink" pen="heavier">
+152 268 m
+152 240 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="pink" pen="heavier">
+264 268 m
+264 260 l
+</path>
+<path matrix="1 0 0 1 0 -4" stroke="pink" pen="heavier">
+264 252 m
+264 240 l
+</path>
+<path stroke="gold" pen="heavier">
+264 552 m
+264 540 l
+</path>
+<path stroke="gold" pen="heavier">
+472 552 m
+472 480 l
+</path>
+<path stroke="gold" pen="heavier">
+472 472 m
+472 380 l
+</path>
+<path stroke="gold" pen="heavier">
+112 752 m
+112 724 l
+</path>
+<path stroke="gold" pen="heavier">
+112 652 m
+112 524 l
+</path>
+<path stroke="gold" pen="heavier">
+112 432 m
+112 380 l
+</path>
+<path stroke="gold" pen="heavier">
+112 372 m
+112 368 l
+</path>
+<path stroke="gold" pen="heavier">
+112 360 m
+112 356 l
+</path>
+<path matrix="0 -1 1 0 -680 816" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+136 656 m
+136 620 l
+</path>
+<path stroke="gold" pen="heavier">
+136 548 m
+136 540 l
+</path>
+<path stroke="gold" pen="heavier">
+136 532 m
+136 524 l
+</path>
+<path stroke="gold" pen="heavier">
+136 432 m
+136 380 l
+</path>
+<path stroke="gold" pen="heavier">
+136 372 m
+136 368 l
+</path>
+<path stroke="gold" pen="heavier">
+136 336 m
+136 308 l
+</path>
+<path matrix="0 -1 1 0 -656 720" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+680 648 m
+680 624 l
+</path>
+<path stroke="gold" pen="heavier">
+680 616 m
+680 612 l
+</path>
+<path stroke="gold" pen="heavier">
+680 548 m
+680 480 l
+</path>
+<path stroke="gold" pen="heavier">
+680 472 m
+680 380 l
+</path>
+<path stroke="gold" pen="heavier">
+680 372 m
+680 368 l
+</path>
+<path stroke="gold" pen="heavier">
+680 332 m
+680 280 l
+</path>
+<path matrix="0 -1 1 0 -112 712" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+536 732 m
+536 680 l
+</path>
+<path stroke="gold" pen="heavier">
+536 672 m
+536 624 l
+</path>
+<path stroke="gold" pen="heavier">
+536 616 m
+536 592 l
+</path>
+<path stroke="gold" pen="heavier">
+536 584 m
+536 524 l
+</path>
+<path stroke="gold" pen="heavier">
+536 428 m
+536 380 l
+</path>
+<path stroke="gold" pen="heavier">
+536 372 m
+536 368 l
+</path>
+<path stroke="gold" pen="heavier">
+536 360 m
+536 356 l
+</path>
+<path matrix="0 -1 1 0 -256 796" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+416 784 m
+416 756 l
+</path>
+<path stroke="gold" pen="heavier">
+416 616 m
+416 596 l
+</path>
+<path stroke="gold" pen="heavier">
+416 548 m
+416 524 l
+</path>
+<path stroke="gold" pen="heavier">
+416 404 m
+416 380 l
+</path>
+<path stroke="gold" pen="heavier">
+416 372 m
+416 368 l
+</path>
+<path matrix="0 -1 1 0 -376 848" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+416 628 m
+416 624 l
+</path>
+<path matrix="0 -1 1 0 -360 696" stroke="gold" fill="gold" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+432 632 m
+432 624 l
+</path>
+<path stroke="gold" pen="heavier">
+432 616 m
+432 596 l
+</path>
+<path stroke="gold" pen="heavier">
+432 548 m
+432 524 l
+</path>
+<path stroke="gold" pen="heavier">
+432 404 m
+432 380 l
+</path>
+<path stroke="gold" pen="heavier">
+432 344 m
+432 320 l
+</path>
+<path stroke="black" pen="heavier">
+656 556 m
+656 580 l
+</path>
+<path matrix="0 -1 1 0 -136 644" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="gold" pen="heavier">
+680 576 m
+680 560 l
+</path>
+<text matrix="1 0 0 1 272 -757.219" transformations="translations" pos="160 832" stroke="black" type="label" width="445.157" height="17.219" depth="2.06" valign="baseline">{\Huge\textbf{Taxonomie des matrices carrée $n \times n$}}</text>
+<path matrix="1 0 0 1 220 -292" stroke="black" pen="heavier">
+816 608 m
+816 592 l
+832 592 l
+832 608 l
+h
+</path>
+<path matrix="1 0 0 1 124 -408" stroke="black" pen="heavier">
+928 716 m
+960 716 l
+</path>
+<path matrix="1 0 0 1 988 -484" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path matrix="1 0 0 1 268 -292" stroke="black" pen="heavier">
+816 608 m
+816 592 l
+832 592 l
+832 608 l
+h
+</path>
+<text matrix="1 0 0 1 224 -288" transformations="translations" pos="816 592" stroke="black" type="label" width="6.149" height="6.808" depth="0" valign="baseline" style="math">\mathcal{E}</text>
+<text matrix="1 0 0 1 272 -288" transformations="translations" pos="816 592" stroke="black" type="label" width="8.15" height="6.808" depth="0" valign="baseline" style="math">\mathcal{F}</text>
+<text matrix="1 0 0 1 172 -334.926" transformations="translations" pos="932 640" stroke="black" type="label" width="170.079" height="6.633" depth="1.64" valign="baseline">\begin{minipage}{6cm}
+$\mathcal{F} \subseteq \mathcal{E}$ :
+$\mathcal{F}$ est un sous-ensemble de $\mathcal{E}$
+\end{minipage}</text>
+<path matrix="1 0 0 1 356 -548" stroke="black" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<path matrix="1 0 0 1 460 -372" stroke="black" fill="white" pen="heavier">
+592 632 m
+608 632 l
+</path>
+<path matrix="1 0 0 1 460 -372" stroke="black" fill="white" pen="heavier">
+624 632 m
+640 632 l
+</path>
+<text matrix="1 0 0 1 348 -552" transformations="translations" pos="720 808" stroke="black" type="label" width="13.549" height="6.653" depth="0" valign="baseline">{\Large$\,\simeq$}</text>
+<path matrix="1 0 0 1 220 -340" stroke="black" pen="heavier">
+816 608 m
+816 592 l
+832 592 l
+832 608 l
+h
+</path>
+<text matrix="1 0 0 1 224 -336" transformations="translations" pos="816 592" stroke="black" type="label" width="6.149" height="6.808" depth="0" valign="baseline" style="math">\mathcal{E}</text>
+<path matrix="1 0 0 1 284 -340" stroke="black" pen="heavier">
+816 608 m
+816 592 l
+832 592 l
+832 608 l
+h
+</path>
+<text matrix="1 0 0 1 288 -336" transformations="translations" pos="816 592" stroke="black" type="label" width="8.15" height="6.808" depth="0" valign="baseline" style="math">\mathcal{F}</text>
+<text matrix="1 0 0 1 188 -382.926" transformations="translations" pos="932 640" stroke="black" type="label" width="170.079" height="6.926" depth="1.93" valign="baseline">\begin{minipage}{6cm}
+$\mathcal{E} \simeq \mathcal{F}$ :
+$\mathcal{E}$ et $\mathcal{F}$ sont isomorphes
+\end{minipage}</text>
+<path matrix="1 0 0 1 460 -396" stroke="black" fill="white" pen="heavier">
+592 632 m
+608 632 l
+</path>
+<path matrix="1 0 0 1 460 -396" stroke="black" fill="white" pen="heavier">
+624 632 m
+640 632 l
+</path>
+<path matrix="1 0 0 1 220 -364" stroke="black" pen="heavier">
+816 608 m
+816 592 l
+832 592 l
+832 608 l
+h
+</path>
+<text matrix="1 0 0 1 224 -360" transformations="translations" pos="816 592" stroke="black" type="label" width="8.15" height="6.808" depth="0" valign="baseline" style="math">\mathcal{F}</text>
+<path matrix="1 0 0 1 284 -364" stroke="black" pen="heavier">
+816 608 m
+816 592 l
+832 592 l
+832 608 l
+h
+</path>
+<text matrix="1 0 0 1 288 -360" transformations="translations" pos="816 592" stroke="black" type="label" width="6.517" height="6.816" depth="0.96" valign="baseline" style="math">\mathcal{G}</text>
+<text matrix="1 0 0 1 188 -406.926" transformations="translations" pos="932 640" stroke="black" type="label" width="170.079" height="13.448" depth="8.47" valign="baseline">\begin{minipage}{6cm}
+$\mathcal{F} {\bigcirc\mathrel{\mspace{-25mu}}\cup} \: \mathcal{G} \; \Leftrightarrow \; (\mathcal{E} = \mathcal{F} \cup \mathcal{G}) \wedge (\mathcal{F} \cap \mathcal{G} = \emptyset)$ : \\
+$\{\mathcal{F}, \mathcal{G}\}$ est une partition de $\mathcal{E}$.
+\end{minipage}</text>
+<path matrix="1 0 0 1 356 -572" stroke="black" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<path matrix="1 0 0 1 356 -572" stroke="black" pen="heavier">
+5.65685 0 0 5.65685 720 808 e
+</path>
+<path matrix="1 0 0 1 356.067 -570.63" stroke="black" pen="heavier">
+717.432 805.202 m
+2.58108 0 0 2.58108 719.995 805.501 722.576 805.507 a
+</path>
+<path matrix="1 0 0 1 356.018 -571.023" stroke="black" pen="heavier">
+717.511 805.538 m
+717.435 810.33 l
+</path>
+<path matrix="1 0 0 1 356.018 -571.023" stroke="black" pen="heavier">
+722.659 805.805 m
+722.647 810.333 l
+</path>
+<path matrix="1 0 0 1 356 -524" stroke="black" fill="white" pen="heavier">
+712 816 m
+712 800 l
+728 800 l
+728 816 l
+h
+</path>
+<path matrix="1 0 0 1 460 -348" stroke="black" fill="white" pen="heavier">
+592 632 m
+608 632 l
+</path>
+<path matrix="1 0 0 1 460 -348" stroke="black" fill="white" pen="heavier">
+624 632 m
+640 632 l
+</path>
+<path matrix="1 0 0 1 220 -316" stroke="black" pen="heavier">
+816 608 m
+816 592 l
+832 592 l
+832 608 l
+h
+</path>
+<text matrix="1 0 0 1 224 -312" transformations="translations" pos="816 592" stroke="black" type="label" width="8.15" height="6.808" depth="0" valign="baseline" style="math">\mathcal{F}</text>
+<path matrix="1 0 0 1 284 -316" stroke="black" pen="heavier">
+816 608 m
+816 592 l
+832 592 l
+832 608 l
+h
+</path>
+<text matrix="1 0 0 1 288 -312" transformations="translations" pos="816 592" stroke="black" type="label" width="6.517" height="6.816" depth="0.96" valign="baseline" style="math">\mathcal{G}</text>
+<text matrix="1 0 0 1 188 -358.926" transformations="translations" pos="932 640" stroke="black" type="label" width="170.079" height="12.686" depth="7.71" valign="baseline">\begin{minipage}{6cm}
+$\mathcal{F} \oplus \mathcal{G} \; \Leftrightarrow \; (\mathcal{E} = \mathcal{F} + \mathcal{G}) \wedge (\mathcal{F} \cap \mathcal{G} = \{0\}$ \\
+$\mathcal{E}$ est la somme directe de $\mathcal{F}$ et $\mathcal{G}$
+\end{minipage}</text>
+<text matrix="1 0 0 1 348 -528" transformations="translations" pos="720 808" stroke="black" type="label" width="13.549" height="8.374" depth="1.19" valign="baseline">{\Large$\,\oplus$}</text>
+<path stroke="black" pen="heavier">
+288 48 m
+288 76 l
+</path>
+<path matrix="0 -1 1 0 -504 140" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="darkgray" pen="heavier">
+536 308 m
+536 280 l
+</path>
+<path matrix="0 -1 1 0 -36 404" stroke="black" fill="black" pen="heavier">
+64 792 m
+72 796 l
+72 788 l
+h
+</path>
+<path stroke="black" pen="heavier">
+720 272 m
+688 272 l
+</path>
+<text matrix="1 0 0 1 212 -544" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+\begin{flushright}
+{\small%
+\quelconque{%
+$0_n \not\in \mathrel{\mspace{3mu}}$ \\
+$I_n \in \!$
+}
+}
+\end{flushright}
+\end{minipage}</text>
+<path matrix="1 0 0 1 16 0" stroke="black" pen="heavier">
+704 272 m
+704 320 l
+</path>
+<path stroke="black" pen="heavier">
+720 320 m
+756 320 l
+</path>
+<path stroke="black" pen="heavier">
+768 252 m
+768 224 l
+</path>
+<path stroke="gold" pen="heavier">
+776 252 m
+776 224 l
+</path>
+<path stroke="black" pen="heavier">
+944 280 m
+944 144 l
+</path>
+<path matrix="1 0 0 1 0 12" stroke="black" pen="heavier">
+944 132 m
+960 132 l
+</path>
+<path stroke="black" pen="heavier">
+952 352 m
+952 192 l
+</path>
+<path stroke="black" pen="heavier">
+952 192 m
+960 192 l
+</path>
+<text matrix="1 0 0 1 660 -684" transformations="translations" pos="272 812" stroke="black" type="label" width="28.346" height="12.078" depth="7.1" valign="baseline">\begin{minipage}{1cm}
+\begin{flushright}
+{\small%
+\groupe{%
+$0_n \not\in \mathrel{\mspace{3mu}}$ \\
+$I_n \in \!$
+}
+}
+\end{flushright}
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 276" stroke="purple" pen="heavier">
+968 384 m
+968 336 l
+1344 336 l
+1344 384 l
+h
+</path>
+<text matrix="1 0 0 1 40 -6.926" transformations="translations" pos="932 640" stroke="black" type="label" width="368.504" height="25.798" depth="20.86" valign="baseline">\begin{minipage}{13cm}
+%
+\begin{center}
+{\color{purple}\textbf{%
+Stable par combinaison linéaire et par multiplication matricielle}}%
+\end{center}
+%
+\vspace{-2ex}
+%
+$(\mathcal{E}, +, . \,, \cdot)$ est une $\mathbb{K}$-algèbre associative unifère non-abélienne ($\mathbb{K} = \mathbb{C}, \mathbb{R}$) : \\
+\phantom{m} $(\mathcal{E}, +, . \,)$ un $\mathbb{K}$-espace-vectoriel, et \\
+\phantom{m} $(\mathcal{E}, +, \cdot)$ un anneau unifère non-abélien.
+%
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 224" stroke="violet" pen="heavier">
+968 384 m
+968 336 l
+1344 336 l
+1344 384 l
+h
+</path>
+<text matrix="1 0 0 1 40 -58.926" transformations="translations" pos="932 640" stroke="black" type="label" width="368.504" height="25.798" depth="20.86" valign="baseline">\begin{minipage}{13cm}
+%
+\begin{center}
+{\color{violet}\textbf{%
+Stable par combinaison linéaire et par multiplication matricielle}}%
+\end{center}
+%
+\vspace{-2ex}
+%
+$(\mathcal{E}, +, . \,, \cdot)$ est une $\mathbb{K}$-algèbre associative unifère abélienne ($\mathbb{K} = \mathbb{C}, \mathbb{R}$) : \\
+\phantom{m} $(\mathcal{E}, +, . \,)$ un $\mathbb{K}$-espace-vectoriel, et \\
+\phantom{m} $(\mathcal{E}, +, \cdot)$ un anneau unifère et intègre (abélien et sans diviseurs de $0$)
+%
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 172" stroke="pink" pen="heavier">
+968 384 m
+968 336 l
+1344 336 l
+1344 384 l
+h
+</path>
+<text matrix="1 0 0 1 40 -110.926" transformations="translations" pos="932 640" stroke="black" type="label" width="368.504" height="25.798" depth="20.86" valign="baseline">\begin{minipage}{13cm}
+%
+\begin{center}
+{\color{pink}\textbf{%
+Stable par combinaison linéaire et par multiplication matricielle}}%
+\end{center}
+%
+\vspace{-2ex}
+%
+$(\mathcal{E}, +, . \,, \cdot)$ est une $\mathbb{K}$-algèbre associative unifère commutative ($\mathbb{K} = \mathbb{C}, \mathbb{R}$) : \\
+\phantom{m} $(\mathcal{E}, +, . \,)$ un $\mathbb{K}$-espace-vectoriel, et \\
+\phantom{m} $(\mathcal{E}, +, \cdot)$ un corps commutatif.
+%
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 180" stroke="blue" pen="heavier">
+968 324 m
+968 284 l
+1344 284 l
+1344 324 l
+h
+</path>
+<text matrix="1 0 0 1 40 -158.926" transformations="translations" pos="932 640" stroke="black" type="label" width="368.504" height="19.55" depth="14.6" valign="baseline">\begin{minipage}{13cm}
+%
+\begin{center}
+{\color{blue}\textbf{%
+Stable par combinaison linéaire mais instable par mult. matricielle}}%
+\end{center}
+%
+\vspace{-2ex}
+%
+$(\mathcal{E}, +, . \,)$ est un $\mathbb{K}$-espace-vectoriel de dimension $d$ : \\
+\phantom{m} $0_d \in \mathcal{E}$ ; et si $A, B \in \mathcal{E}$ et $\alpha, \beta \in \mathbb{K}$, alors $\alpha A + \beta B \in \mathcal{E}$.
+%
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 92" stroke="red" pen="heavier">
+968 324 m
+968 284 l
+1344 284 l
+1344 324 l
+h
+</path>
+<text matrix="1 0 0 1 40 -246.926" transformations="translations" pos="932 640" stroke="black" type="label" width="368.504" height="19.833" depth="14.87" valign="baseline">\begin{minipage}{13cm}
+%
+\begin{center}
+{\color{red}\textbf{%
+Stable par multiplication matricielle et par inversion}}%
+\end{center}
+%
+\vspace{-2ex}
+%
+$(\mathcal{E}^\ast, \cdot)$ est un groupe (multiplicatif) non-abélien \\
+$(\mathcal{E}, +, \cdot)$ forme donc un anneau unifère non-abélien et sans diviseurs de zéro
+%
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 -12" stroke="darkgray" pen="heavier">
+968 384 m
+968 336 l
+1344 336 l
+1344 384 l
+h
+</path>
+<text matrix="1 0 0 1 40 -294.926" transformations="translations" pos="932 640" stroke="black" type="label" width="368.504" height="25.525" depth="20.58" valign="baseline">\begin{minipage}{13cm}
+%
+\begin{center}
+{\color{darkgray}\textbf{%
+Instable par combinaison linéaire et par multiplication matricielle}}%
+\end{center}
+%
+\vspace{-2ex}
+%
+Ensemble $\mathcal{E}$ sans structure algébrique (même pas un magma additif !) : \\
+\phantom{m} --- $0_n$ et $I_n$ peuvent ne pas appartenir à $\mathcal{E}$ ; \\
+\phantom{m} --- si $A, B \in \mathcal{E}$ et $\alpha \in \mathbb{K}$, alors $\alpha A$, $A + B$, $A B$, $B A$ peuvent ne pas appartenir à $\mathcal{E}$.
+%
+\end{minipage}</text>
+<path matrix="1 0 0 1 0 136" stroke="seagreen" pen="heavier">
+968 324 m
+968 284 l
+1344 284 l
+1344 324 l
+h
+</path>
+<text matrix="1 0 0 1 40 -202.926" transformations="translations" pos="932 640" stroke="black" type="label" width="368.504" height="19.833" depth="14.87" valign="baseline">\begin{minipage}{13cm}
+%
+\begin{center}
+{\color{seagreen}\textbf{%
+Stable par multiplication matricielle mais instable par comb. linéaire}}%
+\end{center}
+%
+\vspace{-2ex}
+%
+$(\mathcal{E}, +)$ est un demi-groupe (magma associatif, $0 \not\in \mathcal{E}$) \\
+$(\mathcal{E}, \cdot )$ est un monoïde non-abélien
+%
+\end{minipage}</text>
+<path stroke="pink" fill="white" pen="heavier">
+1112 208 m
+1112 224 l
+</path>
+<path stroke="pink" fill="white" pen="heavier">
+1064 680 m
+1064 664 l
+</path>
+<path stroke="pink" fill="white" pen="heavier">
+1328 320 m
+1328 220 l
+</path>
+<text matrix="1 0 0 1 -260 -32" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="18.817" depth="13.86" valign="baseline">\begin{minipage}{2cm}
+\begin{spacing}{.75}
+{\small%
+	\algebreaunc{%
+		$\ni 0_n$ \\
+		$\ni I_n$ \\
+		$d = n^2$
+	}%
+}%
+\end{spacing}
+\end{minipage}</text>
+<text matrix="1 0 0 1 -260 -484" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="18.817" depth="13.86" valign="baseline">\begin{minipage}{2cm}
+\begin{spacing}{.75}
+{\small%
+	\algebreaunc{%
+		$\ni 0_n$ \\
+		$\ni I_n$ \\
+		$d = n^2$
+	}%
+}%
+\end{spacing}
+\end{minipage}</text>
+<text matrix="1 0 0 1 240 -249.12" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="18.841" depth="13.89" valign="baseline">\begin{minipage}{2cm}
+{\small%
+\evsev{%
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$ \\
+$\mathrel{\mspace{2mu}} d = \tfrac{n(n+1)}{2}$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 176 -296" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="19.324" depth="14.37" valign="baseline">\begin{minipage}{2cm}
+{\small%
+\evsev{%
+$\mathrel{\mspace{2mu}} d = \tfrac{n(n+1)}{2}$ \\
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 -32 -296" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="19.701" depth="14.74" valign="baseline">\begin{minipage}{2cm}
+{\small%
+\evsev{%
+$\mathrel{\mspace{2mu}} d = \tfrac{n(n-1)}{2}$ \\
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \not\ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 511.838 -618.399" transformations="translations" pos="272 812" stroke="black" type="label" width="113.386" height="6.48" depth="1.49" valign="baseline">\begin{minipage}{4cm}
+{\small%
+\algebrecc{%
+$\mathrel{\mspace{2mu}} \ni 0_n$, \quad
+$\mathrel{\mspace{2mu}} \ni I_n$, \quad
+$\mathrel{\mspace{2mu}} d = 1$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 303.838 -618.399" transformations="translations" pos="272 812" stroke="black" type="label" width="113.386" height="6.48" depth="1.49" valign="baseline">\begin{minipage}{4cm}
+{\small%
+\algebreai{%
+$\mathrel{\mspace{2mu}} \ni 0_n$, \quad
+$\mathrel{\mspace{2mu}} \ni I_n$, \quad
+$\mathrel{\mspace{2mu}} d = 1$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 415.838 -270.399" transformations="translations" pos="272 812" stroke="black" type="label" width="113.386" height="6.48" depth="1.49" valign="baseline">\begin{minipage}{4cm}
+{\small%
+\algebrecc{%
+$\mathrel{\mspace{2mu}} \ni 0_n$, \quad
+$\mathrel{\mspace{2mu}} \ni I_n$, \quad
+$\mathrel{\mspace{2mu}} d = 1$.
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 0 -592" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="19.701" depth="14.74" valign="baseline">\begin{minipage}{2cm}
+{\small%
+\evsev{%
+$\mathrel{\mspace{2mu}} d = \tfrac{n(n-1)}{2}$ \\
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \not\ni I_n$
+}
+}
+\end{minipage}</text>
+<text matrix="1 0 0 1 208 -632" transformations="translations" pos="272 812" stroke="black" type="label" width="56.693" height="19.324" depth="14.37" valign="baseline">\begin{minipage}{2cm}
+{\small%
+\evsev{%
+$\mathrel{\mspace{2mu}} d = \tfrac{n(n+1)}{2}$ \\
+$\mathrel{\mspace{2mu}} \ni 0_n$ \\
+$\mathrel{\mspace{2mu}} \ni I_n$
+}
+}
+\end{minipage}</text>
+<path stroke="black" fill="white" pen="heavier">
+840 12 m
+840 16 l
+</path>
+<text matrix="1 0 0 1 64 -12" transformations="translations" pos="1008 16" stroke="black" type="label" width="280.802" height="6.229" depth="1.99" valign="baseline">{\small%
+\texttt{https://github.com/LaurentValade/taxonomie-matrices-carrees}
+}</text>
+</page>
+</ipe>
