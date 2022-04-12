@@ -21,7 +21,21 @@ Cette impression s’estompe quand on découvre l’excellent diagramme suivant 
   />
 </p>
 
-Ce diagramme est une version plus exhaustive et détaillé de ce dernier.
+Ce diagramme est une version plus exhaustive et détaillé de ce dernier :
+
+<!--
+Exportation PDF vers PNG :
+- dimensions du PDF : 48.02 × 29.71 cm
+- largeur voulue de l’image PNG : 800 px
+- résolution (dpi) : 800 px / (48.02 cm / 2.54 in/cm) = 42 px/in
+-->
+
+<p align="center">
+  <img
+    src="https://github.com/LaurentValade/taxonomie-matrices-carrees/blob/main/README/taxonomie-matrices-carrees.ipe.pdf.42dpi.png"
+    alt="Taxonomie des matrices complexes"
+  />
+</p>
 
 Ces diagrammes sont inspirés des [diagrammes de classes](https://fr.wikipedia.org/wiki/Diagramme_de_classes) de la [programmation orientée objets](https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet), cette inspiration est pertinente car il y a une forte analogie entre [inclusion](https://fr.wikipedia.org/wiki/Inclusion_%28math%C3%A9matiques%29) et [héritage](https://fr.wikipedia.org/wiki/H%C3%A9ritage_%28informatique%29) :
 
